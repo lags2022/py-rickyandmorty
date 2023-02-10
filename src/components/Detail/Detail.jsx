@@ -29,7 +29,7 @@ const Detail = () => {
     };
     getDetail();
     return () => setDetail({});
-  }, []);
+  }, [id]);
 
   return (
     <div className={style.detail}>
