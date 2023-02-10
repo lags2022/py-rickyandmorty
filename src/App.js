@@ -28,7 +28,6 @@ function App() {
   const onClose = (id) => {
     setCharacters(characters.filter((char) => char.id !== id));
   };
-  console.log(characters);
   return (
     <div className="app">
       <Nav onSearch={onSearch} onClean={onClean} />

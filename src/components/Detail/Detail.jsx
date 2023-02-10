@@ -33,15 +33,17 @@ const Detail = () => {
 
   return (
     <div className={style.detail}>
-      <div className={style.info}>
-        <h2>{detail.name}</h2>
-        <h4>{detail.status}</h4>
-        <h4>{detail.species}</h4>
-        <h4>{detail.gender}</h4>
-        <h4>{detail.origin?.name}</h4>
-        <p>{detail.name2 ? detail.name2 : ""}</p>
+      <div className={style.container}>
+        <div className={style.info}>
+          <h2>{detail.name}</h2>
+          <h4>Status: {detail.status}</h4>
+          <h4>Specie: {detail.species}</h4>
+          <h4>Genero: {detail.gender}</h4>
+          <h4>Origen: {detail.origin?.name}</h4>
+          <p>Episodio: {detail.name2 ? detail.name2 : ""}</p>
+        </div>
+        <img src={detail.image} alt={detail.name} />
       </div>
-      <img src={detail.image} alt={detail.name} />
     </div>
   );
 };

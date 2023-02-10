@@ -1,8 +1,42 @@
 .detail {
   position: absolute;
-  max-width: 1400px;
-  margin: 60px;
-  display: flex;
-  margin: auto;
+  width: 100vw;
+  margin-top: 100px;
+  color: white;
 }
 
+.container {
+  width: 540px;
+  height: 300px;
+  padding: 20px;
+  margin: auto;
+  display: flex;
+  place-content: center;
+  border: 3px solid #074807;
+  border-radius: 30px;
+  background-image: url("../../images/card.png");
+  box-shadow: 1px 1px 10px #4ca34c;
+}
+
+.container img{
+  width: 230px;
+  height: 230px;
+  margin: auto 10px;
+  border: 4px solid #4ca34c;
+  border-radius: 50%;
+}
+
+.info{
+  padding: 20px;
+}
+
+.info h2{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.info h4,.info p{
+  margin: 10px 0px;
+  text-align: initial;
+  padding: 0px 10px ;
+}
