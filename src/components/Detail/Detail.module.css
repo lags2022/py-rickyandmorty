@@ -1,0 +1,8 @@
+.detail {
+  position: absolute;
+  max-width: 1400px;
+  margin: 60px;
+  display: flex;
+  margin: auto;
+}
+

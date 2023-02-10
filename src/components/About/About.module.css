@@ -1,0 +1,20 @@
+.container {
+  max-width: 1400px;
+  margin: 50px 100px;
+  position: absolute;
+  color: white;
+  text-align: center;
+}
+
+.info h3 {
+  font-size: 1.5em;
+}
+
+.info p {
+  text-align: justify;
+}
+
+.container img {
+  width: 300px;
+  border-radius: 20px;
+}
