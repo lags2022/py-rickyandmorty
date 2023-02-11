@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faShuffle,faRotate } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ onSearch, onClean }) => {
   const [id, setId] = useState("");
@@ -11,7 +11,7 @@ const SearchBar = ({ onSearch, onClean }) => {
 
   return (
     <div className={style.searchBar}>
-      <p>Personaje</p>
+      <p>Character</p>
       <input
         type="text"
         onChange={(e) => handleChange(e)}
@@ -24,16 +24,16 @@ const SearchBar = ({ onSearch, onClean }) => {
           setId("");
         }}
       >
-        <FontAwesomeIcon className={style.fawe} icon={faBars} />
-        <span>Agregar</span>
+        <FontAwesomeIcon className={style.fawe} icon={faCheck} />
+        <span>Add</span>
       </button>
       <button onClick={() => onSearch(Math.floor(Math.random() * 826) + 1)}>
-        <FontAwesomeIcon className={style.fawe} icon={faBars} />
+        <FontAwesomeIcon className={style.fawe} icon={faShuffle} />
         <span>Random</span>
       </button>
       <button onClick={() => onClean()}>
-        <FontAwesomeIcon className={style.fawe} icon={faBars} />
-        <span>Limpiar</span>
+        <FontAwesomeIcon className={style.fawe} icon={faRotate} />
+        <span>Reset</span>
       </button>
     </div>
   );

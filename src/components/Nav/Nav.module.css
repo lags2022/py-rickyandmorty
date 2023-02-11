@@ -8,19 +8,23 @@ header {
   z-index: 2;
 }
 
-.links {
+header .links {
   padding-left: 30px;
   width: 150px;
   display: flex;
   justify-content: space-between;
 }
 
-.link {
+header .link {
   color: white;
   text-decoration: none;
 }
 
-.icon {
+header .links2 {
+  display: none;
+}
+
+header .icon {
   display: none;
 }
 
@@ -32,7 +36,11 @@ header {
     align-items: center;
   }
 
-  .icon {
+  header .links {
+    display: none;
+  }
+
+  header .icon {
     display: block;
     background-image: linear-gradient(
       0deg,
@@ -47,14 +55,11 @@ header {
     width: 75px;
   }
 
-  .links{
+  header .links2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-left: 0;
   }
-
-  
-
 }
