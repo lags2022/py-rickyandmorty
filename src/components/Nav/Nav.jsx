@@ -1,11 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Nav.module.css";
 
 const Nav = (props) => {
-  const location = useLocation();
   return (
-    <header className={location.pathname === "/error"?style.oculto:""}>
+    <header>
       <div className={style.links}>
         <Link className={style.link} to="home">
           Home

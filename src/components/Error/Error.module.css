@@ -1,0 +1,27 @@
+.error_h1 {
+  font-size: 20em;
+  margin: 0;
+  padding: 0;
+  width: 550px;
+  height: 400px;
+  letter-spacing: 200px;
+  color: #c8f92c;
+}
+
+.error_button {
+  font-size: 0.9em;
+  width: 100px;
+  padding: 4px;
+  border: 1.5px solid rgb(48, 48, 48);
+  color: white;
+  background-color: #4ca34c;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.error_button:hover {
+  background-color: #c8f92c;
+  color: #052b3f;
+}

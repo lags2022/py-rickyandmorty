@@ -1,19 +1,15 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Cards from "./components/Cards/Cards";
 import Nav from "./components/Nav/Nav";
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
 import Error from "./components/Error/Error";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const location = useLocation();
-  const navigate = useNavigate();
-  const locationError =
-    !["/", "/home", "/about"].includes(location.pathname) &&
-    !(location.pathname.substring(0, 8) === "/detail/");
 
   const onSearch = (id) => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
@@ -35,13 +31,11 @@ function App() {
     setCharacters(characters.filter((char) => char.id !== id));
   };
 
-  useEffect(() => {
-    locationError && navigate("/error");
-  }, [locationError, navigate, location.pathname]);
-
   return (
-    <div className={locationError && "no-background"}>
-      <Nav onSearch={onSearch} onClean={onClean} />
+    <div>
+      {location.pathname !== "/error404" && (
+        <Nav onSearch={onSearch} onClean={onClean} />
+      )}
       <Routes>
         <Route
           path="/home"
@@ -49,7 +43,8 @@ function App() {
         />
         <Route path="about" element={<About />} />
         <Route path="detail/:id" element={<Detail />} />
-        <Route path="error" element={<Error />} />
+        <Route path="error404" element={<Error />} />
+        <Route path="*" element={<Navigate to="error404" replace />} />
       </Routes>
     </div>
   );
