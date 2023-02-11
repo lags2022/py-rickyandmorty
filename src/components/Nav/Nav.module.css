@@ -7,6 +7,10 @@ header {
   background: url("../../images/card.png");  z-index: 2;
 }
 
+.oculto{
+  display: none;
+}
+
 .links{
   padding-left: 30px;
   width: 150px;

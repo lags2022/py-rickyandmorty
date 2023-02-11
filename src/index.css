@@ -3,15 +3,15 @@
 body{
     font-family: "Open Sans", sans-serif;
     margin: 0;
+    position: relative;
     background: linear-gradient(
         0deg,
         rgba(0,0,0,0.5),
         rgba(0,0,0,0.5)
     ),
     url("https://www.xtrafondos.com/wallpapers/rick-and-morty-en-3d-8453.jpg");
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    position: relative;
 }

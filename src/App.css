@@ -1,0 +1,15 @@
+.no-background{
+    background:url("https://staticdelivery.nexusmods.com/mods/1151/images/528-0-1447526230.png");
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 400px;
+    height: 100vh;
+}
+
+.no-background h1{
+    font-size: 20em;
+    margin: 0;
+    padding: 40px calc(100vw - 900px);
+    letter-spacing: 150px;
+}

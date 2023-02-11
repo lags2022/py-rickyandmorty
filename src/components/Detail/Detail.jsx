@@ -1,11 +1,12 @@
 import style from "./Detail.module.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Detail = () => {
   const { id } = useParams();
   const [detail, setDetail] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getDetail = async () => {
@@ -44,6 +45,9 @@ const Detail = () => {
         </div>
         <img src={detail.image} alt={detail.name} />
       </div>
+      <button className={style.detail_button} onClick={() => navigate("/home")}>
+        Home
+      </button>
     </div>
   );
 };
