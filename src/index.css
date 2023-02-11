@@ -1,18 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
 
-body{
-    box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
-    margin: 0;
-    position: relative;
-    background: linear-gradient(
-        0deg,
-        rgba(0,0,0,0.5),
-        rgba(0,0,0,0.5)
-    ),
+body {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  position: relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://www.xtrafondos.com/wallpapers/rick-and-morty-en-3d-8453.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    background-size: 650px;
+    background-position-y: 40px;
+    background-repeat: repeat;
+  }
 }

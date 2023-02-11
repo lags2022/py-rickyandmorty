@@ -4,17 +4,35 @@ header {
   justify-content: space-between;
   width: 100%;
   padding: 13px;
-  background: url("../../images/card.png");  z-index: 2;
+  background: url("../../images/card.png");
+  z-index: 2;
 }
 
-.links{
+.links {
   padding-left: 30px;
   width: 150px;
   display: flex;
   justify-content: space-between;
 }
 
-.link{
+.link {
   color: white;
   text-decoration: none;
+}
+
+.icon {
+    background-color: red;
+    /* display: none; */
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon {
+    display: block;
+    background-color: white;
+  }
 }
