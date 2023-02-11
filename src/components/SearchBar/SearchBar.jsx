@@ -1,5 +1,7 @@
 import { useState } from "react";
 import style from "./SearchBar.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ onSearch, onClean }) => {
   const [id, setId] = useState("");
@@ -22,12 +24,17 @@ const SearchBar = ({ onSearch, onClean }) => {
           setId("");
         }}
       >
-        Agregar
+        <FontAwesomeIcon className={style.fawe} icon={faBars} />
+        <span>Agregar</span>
       </button>
       <button onClick={() => onSearch(Math.floor(Math.random() * 826) + 1)}>
-        Random
+        <FontAwesomeIcon className={style.fawe} icon={faBars} />
+        <span>Random</span>
       </button>
-      <button onClick={() => onClean()}>Limpiar</button>
+      <button onClick={() => onClean()}>
+        <FontAwesomeIcon className={style.fawe} icon={faBars} />
+        <span>Limpiar</span>
+      </button>
     </div>
   );
 };
