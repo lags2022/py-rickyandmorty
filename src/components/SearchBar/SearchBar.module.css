@@ -1,7 +1,7 @@
 .searchBar {
   padding-right: 30px;
   color: white;
-  width: 380px;
+  width: 450px;
   display: flex;
   justify-content: space-between;
 }
