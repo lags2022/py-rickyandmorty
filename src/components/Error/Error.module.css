@@ -29,8 +29,10 @@
 @media screen and (max-width: 600px) {
   .error_h1 {
     font-size: 6em;
-  letter-spacing: 70px;
-  width: 220px;
-  height: 150px;
+    letter-spacing: 70px;
+    width: 220px;
+    height: 150px;
+    margin-top: 30px;
+    margin-left: 50px;
   }
 }
