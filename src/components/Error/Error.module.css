@@ -25,3 +25,12 @@
   background-color: #c8f92c;
   color: #052b3f;
 }
+
+@media screen and (max-width: 600px) {
+  .error_h1 {
+    font-size: 6em;
+  letter-spacing: 70px;
+  width: 220px;
+  height: 150px;
+  }
+}

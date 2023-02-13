@@ -1,12 +1,18 @@
-.no-background{
-    background:url("https://staticdelivery.nexusmods.com/mods/1151/images/528-0-1447526230.png");
-    background-color: white;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 400px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.no-background {
+  background: url("https://staticdelivery.nexusmods.com/mods/1151/images/528-0-1447526230.png");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .no-background {
+    background-size: 150px;
+  }
 }
