@@ -16,6 +16,7 @@ const Nav = (props) => {
         <Link className={style.link} to="about">
           About
         </Link>
+        <button onClick={()=>props.logouted()} >Logout</button>
       </>
     );
   };
