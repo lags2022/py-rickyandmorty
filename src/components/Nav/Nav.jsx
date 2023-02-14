@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Nav.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const Nav = (props) => {
@@ -16,7 +16,13 @@ const Nav = (props) => {
         <Link className={style.link} to="about">
           About
         </Link>
-        <button onClick={()=>props.logouted()} >Logout</button>
+        <button
+          className={style.button_logout}
+          onClick={() => props.logouted()}
+        >
+          <FontAwesomeIcon className={style.fawe2} icon={faRightFromBracket} />
+          <span>Logout</span>
+        </button>
       </>
     );
   };

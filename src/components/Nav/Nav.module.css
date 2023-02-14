@@ -10,7 +10,7 @@ header {
 
 header .links {
   padding-left: 30px;
-  width: 150px;
+  width: 200px;
   display: flex;
   justify-content: space-between;
 }
@@ -25,6 +25,26 @@ header .links2 {
 }
 
 header .icon {
+  display: none;
+}
+
+header .button_logout {
+  width: 70px;
+  border: 2px;
+  color: white;
+  background-color: #4ca34c;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+header .button_logout:hover {
+  background-color: #c8f92c;
+  color: #052b3f;
+}
+
+header .fawe2 {
   display: none;
 }
 
@@ -61,5 +81,23 @@ header .icon {
     justify-content: center;
     align-items: center;
     padding-left: 0;
+  }
+
+  header .button_logout{
+    padding: 3px 0px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  header .button_logout{
+    width: 30px;
+  }
+
+  header .fawe2 {
+    display: inline;
+  }
+
+  header .button_logout span {
+    display: none;
   }
 }

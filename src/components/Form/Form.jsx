@@ -38,6 +38,10 @@ export default function Form({valiDated}) {
   return (
     <div className={style.form}>
       <h3>LOGIN</h3>
+      <div className={style.datos_correctos}>
+        <p>username: luis@gmail.com</p>
+        <p>password: admin1234</p>
+      </div>
       <form action="login" onSubmit={handleSubmit}>
         <label htmlFor="username">USERNAME: </label>
         <input
@@ -47,7 +51,7 @@ export default function Form({valiDated}) {
           placeholder="Ingrese el usuario..."
           value={form.username}
         />
-        {error.username && <span>{error.username}</span>}
+        <p>{error.username}</p>
         <label htmlFor="password">PASSWORD: </label>
         <input
           type="password"
@@ -56,7 +60,7 @@ export default function Form({valiDated}) {
           placeholder="Ingrese el password..."
           value={form.password}
         />
-        {error.password && <span>{error.password}</span>}
+        <p>{error.password}</p>
         <button type="submit" onClick={() => handleSubmit()}>Login</button>
       </form>
     </div>
