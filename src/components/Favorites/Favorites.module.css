@@ -1,0 +1,42 @@
+.favorites {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 0;
+  padding-top: 50px;
+  justify-content: center;
+}
+
+.favorites li {
+  border-radius: 10px;
+  height: 300px;
+  width: 250px;
+  padding: 0;
+  box-shadow: 1px 1px 10px #4ca34c;
+  background: url("../../images/card.png");
+  list-style: none;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favorites li p{
+  color: white;
+  margin: 0px;
+  margin-top: 10px;
+}
+
+.favorites li img {
+  width: 95%;
+  height: 250px;
+  margin: 6px;
+  border-radius: 8px;
+}
+
+@media screen and (max-width:600px){
+  .favorites{
+    padding-top: 150px;
+  }
+}

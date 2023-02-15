@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Cards from "./components/Cards/Cards";
 import Nav from "./components/Nav/Nav";
 import About from "./components/About/About";
+import Favorites from "./components/Favorites/Favorites";
 import Detail from "./components/Detail/Detail";
 import Error from "./components/Error/Error";
 import Form from "./components/Form/Form";
@@ -76,6 +77,7 @@ function App() {
           element={<Cards characters={characters} onClose={onClose} />}
         />
         <Route path="about" element={<About />} />
+        <Route path="favorites" element={<Favorites />} />
         <Route path="detail/:id" element={<Detail />} />
         <Route path="error404" element={<Error />} />
         <Route path="*" element={<Navigate to="error404" replace />} />

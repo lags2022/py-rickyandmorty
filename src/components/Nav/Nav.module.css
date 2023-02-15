@@ -10,7 +10,7 @@ header {
 
 header .links {
   padding-left: 30px;
-  width: 200px;
+  width: 300px;
   display: flex;
   justify-content: space-between;
 }
