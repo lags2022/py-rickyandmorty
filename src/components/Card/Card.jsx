@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const Card = (props) => {
   const [isFav, setIsFav] = useState(false);
   const dispatch = useDispatch();
-  const { myFavorites } = useSelector((state) => state);
+  const { allCharacters } = useSelector((state) => state);
   const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);
@@ -18,8 +18,8 @@ const Card = (props) => {
     }
   };
   useEffect(() => {
-    for (const fav of myFavorites) fav.id === props.id && setIsFav(true);
-  }, [myFavorites]);
+    for (const fav of allCharacters) fav.id === props.id && setIsFav(true);
+  }, [allCharacters]);
   return (
     <div className={styles.card}>
       <img src={props.image} alt={props.name} />

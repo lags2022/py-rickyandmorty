@@ -20,7 +20,7 @@ const Nav = (props) => {
           Favorites
         </Link>
         <Link className={style.link} to="portafolio">
-          My Portafolio
+          Portafolio
         </Link>
         <button
           className={style.button_logout}
