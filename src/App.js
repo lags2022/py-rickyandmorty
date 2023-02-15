@@ -14,6 +14,9 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {deleteFavorite} from "./redux/actions_creators"
+import Portafolio from "./components/Portafolio/Portafolio";
 
 const valiDatos = {
   username: "luis@gmail.com",
@@ -25,6 +28,7 @@ function App() {
   const [access, setAccess] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch=useDispatch();
 
   const valiDated = (form) => {
     if (
@@ -55,6 +59,7 @@ function App() {
 
   const onClose = (id) => {
     setCharacters(characters.filter((char) => char.id !== id));
+    dispatch(deleteFavorite(id))
   };
 
   useEffect(() => {
@@ -78,6 +83,7 @@ function App() {
         />
         <Route path="about" element={<About />} />
         <Route path="favorites" element={<Favorites />} />
+        <Route path="portafolio" element={<Portafolio />} />
         <Route path="detail/:id" element={<Detail />} />
         <Route path="error404" element={<Error />} />
         <Route path="*" element={<Navigate to="error404" replace />} />
