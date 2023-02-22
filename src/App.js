@@ -15,7 +15,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {deleteFavorite} from "./redux/actions_creators"
+import { deleteFavorite,resetfavorites } from "./redux/actions_creators";
 import Portafolio from "./components/Portafolio/Portafolio";
 
 const valiDatos = {
@@ -28,7 +28,7 @@ function App() {
   const [access, setAccess] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   const valiDated = (form) => {
     if (
@@ -42,7 +42,8 @@ function App() {
     }
   };
   const onSearch = (id) => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    // fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
       .then((res) => res.json())
       .then((data) => {
         data.error || !data.id
@@ -50,30 +51,32 @@ function App() {
           : !characters.find((char) => char.id === parseInt(id))
           ? setCharacters([...characters, data])
           : window.alert("Personaje duplicado");
-      });
+      })
+      .catch((error) => window.alert("parameter invalid"));
   };
 
   const onClean = () => {
     setCharacters([]);
+    dispatch(resetfavorites())
   };
 
   const onClose = (id) => {
     setCharacters(characters.filter((char) => char.id !== id));
-    dispatch(deleteFavorite(id))
+    dispatch(deleteFavorite(id));
   };
 
   useEffect(() => {
     !access && navigate("/");
   }, [access]);
 
-  const logouted=()=>{
-    setAccess(false)
-  }
+  const logouted = () => {
+    setAccess(false);
+  };
 
   return (
     <div>
       {location.pathname !== "/error404" && location.pathname !== "/" && (
-        <Nav logouted={logouted} onSearch={onSearch} onClean={onClean}/>
+        <Nav logouted={logouted} onSearch={onSearch} onClean={onClean} />
       )}
       <Routes>
         <Route path="/" element={<Form valiDated={valiDated} />} />

@@ -12,18 +12,9 @@ const Detail = () => {
     const getDetail = async () => {
       try {
         const character = await axios(
-          `https://rickandmortyapi.com/api/character/${id}`
+          `http://localhost:3001/rickandmorty/detail/${id}`
         );
         setDetail(character.data);
-
-        const episoded = await axios(
-          `${
-            character.data.episode.length
-              ? character.data.episode.at(0)
-              : new Error("")
-          }`
-        );
-        setDetail({ ...character.data, name2: episoded.data.name });
       } catch (error) {
         window.alert("no hay informacion");
       }
@@ -40,8 +31,8 @@ const Detail = () => {
           <h4>Status: {detail.status}</h4>
           <h4>Specie: {detail.species}</h4>
           <h4>Genero: {detail.gender}</h4>
-          <h4>Origen: {detail.origin?.name}</h4>
-          <p>Episodio: {detail.name2 ? detail.name2 : ""}</p>
+          <h4>Origen: {detail.origin}</h4>
+          <p>Episodio: {detail.episode}</p>
         </div>
         <img src={detail.image} alt={detail.name} />
       </div>

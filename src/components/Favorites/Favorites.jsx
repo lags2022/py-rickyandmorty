@@ -1,10 +1,18 @@
 import style from "./Favorites.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { orderCards, filterCards } from "../../redux/actions_creators";
+import {
+  orderCards,
+  filterCards,
+  getFavorites,
+} from "../../redux/actions_creators";
+import { useEffect } from "react";
 
 export default function Favorites() {
   const { myFavorites } = useSelector((state) => state);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFavorites());
+  }, []);
   return (
     <>
       <div className={style.select}>

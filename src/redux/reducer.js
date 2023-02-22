@@ -11,12 +11,17 @@ const redFavoritos = (state = initialState, actions) => {
       myFavorites: [...state.allCharacters, actions.payload],
     },
     REMOVEFAVORITES: {
+      ...state,
       myFavorites: state.myFavorites.filter(
         (fav) => fav.id !== actions.payload
       ),
       allCharacters: state.allCharacters.filter(
         (fav) => fav.id !== actions.payload
       ),
+    },
+    GETFAVORITES: {
+      myFavorites: actions.payload,
+      allCharacters: actions.payload,
     },
     FILTER: {
       ...state,
@@ -31,6 +36,11 @@ const redFavoritos = (state = initialState, actions) => {
           ? state.allCharacters.sort((a, b) => a.id - b.id)
           : state.allCharacters.sort((a, b) => b.id - a.id),
     },
+    RESETFAVORITES:{
+      ...state,
+      myFavorites: actions.payload,
+      allCharacters: actions.payload,
+    }
   };
   return ACTIONS[actions.type] || { ...state };
 };
