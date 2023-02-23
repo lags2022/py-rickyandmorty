@@ -8,13 +8,13 @@ import {
 } from "./actions";
 import axios from "axios";
 
-const url = "https://backrick.fly.dev/rickandmorty/fav";
+// const url = "http://localhost:3001/rickandmorty/fav";
+const url = "https://rickback.fly.dev//rickandmorty/fav";
 
 export const addFavorite = (idfav) => {
   return async function (dispatch) {
     try {
       const add = await axios.post(url, idfav);
-      console.log(add.data, "post");
       return dispatch({
         type: ADDFAVORITES,
         payload: add.data,
@@ -45,7 +45,6 @@ export const deleteFavorite = (id) => {
       const dele = await axios.delete(
         `${url}/${id}`
       );
-      console.log(dele.data, "delete");
       return dispatch({
         type: REMOVEFAVORITES,
         payload: dele.data.id,
@@ -73,7 +72,7 @@ export const orderCards = (id) => {
 export const resetfavorites = () => {
   return async function (dispatch) {
     try {
-      const reset = await axios.get(
+      const reset = await axios.delete(
         `${url}/reset`
       );
       return dispatch({

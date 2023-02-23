@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addFavorite,
   deleteFavorite,
-  getFavorites,
 } from "../../redux/actions_creators";
 import { useEffect, useState } from "react";
 
@@ -22,12 +21,10 @@ const Card = (props) => {
     }
   };
   useEffect(() => {
-    console.log("holaa")
     for (const fav of allCharacters){
       fav.id === props.id && setIsFav(true);
     } 
   }, [allCharacters]);
-  console.log(allCharacters)
   return (
     <div className={styles.card}>
       <img src={props.image} alt={props.name} />

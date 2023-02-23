@@ -12,7 +12,8 @@ const Detail = () => {
     const getDetail = async () => {
       try {
         const character = await axios(
-          `https://backrick.fly.dev/rickandmorty/detail/${id}`
+          `https://rickback.fly.dev/rickandmorty/detail/${id}`
+          // `http://localhost:3001/rickandmorty/detail/${id}`
         );
         setDetail(character.data);
       } catch (error) {
