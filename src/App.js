@@ -63,7 +63,7 @@ function App() {
 
   const onClose = (id) => {
     setCharacters(characters.filter((char) => char.id !== id));
-    // dispatch(deleteFavorite(id));
+    dispatch(deleteFavorite(id));
   };
 
   useEffect(() => {
