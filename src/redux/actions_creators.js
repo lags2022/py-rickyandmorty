@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 
 // const url = "http://localhost:3001/rickandmorty/fav";
-const url = "https://rickback.fly.dev//rickandmorty/fav";
+const url = "https://rickback.fly.dev/rickandmorty/fav";
 
 export const addFavorite = (idfav) => {
   return async function (dispatch) {
