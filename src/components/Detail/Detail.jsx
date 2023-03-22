@@ -12,8 +12,9 @@ const Detail = () => {
     const getDetail = async () => {
       try {
         const character = await axios(
-          `https://rickback.fly.dev/rickandmorty/detail/${id}`
-          // `http://localhost:3001/rickandmorty/detail/${id}`
+          // vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
+          // `https://rickback.fly.dev/rickandmorty/detail/${id}`
+          `http://localhost:3001/rickandmorty/detail/${id}`
         );
         setDetail(character.data);
       } catch (error) {

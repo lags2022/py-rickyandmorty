@@ -8,8 +8,9 @@ import {
 } from "./actions";
 import axios from "axios";
 
-// const url = "http://localhost:3001/rickandmorty/fav";
-const url = "https://rickback.fly.dev/rickandmorty/fav";
+// vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
+const url = "http://localhost:3001/rickandmorty/fav";
+// const url = "https://rickback.fly.dev/rickandmorty/fav";
 
 export const addFavorite = (idfav) => {
   return async function (dispatch) {
