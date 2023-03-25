@@ -13,7 +13,7 @@ const Detail = () => {
       try {
         const character = await axios(
           // vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
-          `https://rickback.fly.dev/rickandmorty/detail/${id}`
+          `https://backrickandmorty.fly.dev/rickandmorty/detail/${id}`
           // `http://localhost:3001/rickandmorty/detail/${id}`
         );
         setDetail(character.data);

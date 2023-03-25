@@ -38,7 +38,7 @@ function App() {
     // vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
     // fetch(`https://rickandmortyapi.com/api/character/${id}`)
     // fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-      fetch(`https://rickback.fly.dev/rickandmorty/character/${id}`)
+      fetch(`https://backrickandmorty.fly.dev/rickandmorty/character/${id}`)
       .then((res) => res.json())
       .then((data) => {
         data.error || !data.id
