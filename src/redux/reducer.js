@@ -1,6 +1,7 @@
 const initialState = {
   myFavorites: [],
   allCharacters: [],
+  user: null,
 };
 
 const redFavoritos = (state = initialState, actions) => {
@@ -36,11 +37,19 @@ const redFavoritos = (state = initialState, actions) => {
           ? state.allCharacters.sort((a, b) => a.id - b.id)
           : state.allCharacters.sort((a, b) => b.id - a.id),
     },
-    RESETFAVORITES:{
+    RESETFAVORITES: {
       ...state,
       myFavorites: actions.payload,
       allCharacters: actions.payload,
-    }
+    },
+    LOGINUSER: {
+      ...state,
+      user: actions.payload,
+    },
+    PERSISTENTUSER: {
+      ...state,
+      user: actions.payload,
+    },
   };
   return ACTIONS[actions.type] || { ...state };
 };

@@ -14,38 +14,31 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deleteFavorite,resetfavorites } from "./redux/actions_creators";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteFavorite,
+  resetfavorites,
+  persistenuser,
+} from "./redux/actions_creators";
 import Portafolio from "./components/Portafolio/Portafolio";
 
-const valiDatos = {
-  username: "luis@gmail.com",
-  password: "admin1234",
-};
+// const valiDatos = {
+//   email: "luis@gmail.com",
+//   password: "admin1234",
+// };
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [access, setAccess] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state);
 
-  const valiDated = (form) => {
-    if (
-      form.username === valiDatos.username &&
-      form.password === valiDatos.password
-    ) {
-      setAccess(true);
-      navigate("/home");
-    } else {
-      alert("Datos incorrectos");
-    }
-  };
   const onSearch = (id) => {
     // vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
     // fetch(`https://rickandmortyapi.com/api/character/${id}`)
     fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-    // fetch(`https://rickback.fly.dev/rickandmorty/character/${id}`)
+      // fetch(`https://rickback.fly.dev/rickandmorty/character/${id}`)
       .then((res) => res.json())
       .then((data) => {
         data.error || !data.id
@@ -59,20 +52,29 @@ function App() {
 
   const onClean = () => {
     setCharacters([]);
-    dispatch(resetfavorites())
+    dispatch(resetfavorites());
   };
 
   const onClose = (id) => {
     setCharacters(characters.filter((char) => char.id !== id));
     dispatch(deleteFavorite(id));
   };
-
   useEffect(() => {
-    !access && navigate("/");
-  }, [access]);
+    const loggedUserJSON = window.localStorage.getItem("loggedUser");
+    if (user) {
+      if (!loggedUserJSON)
+        window.localStorage.setItem("loggedUser", JSON.stringify(user));
+      navigate("/home");
+    } else if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      dispatch(persistenuser(user));
+    } else navigate("/");
+  }, [user]);
 
   const logouted = () => {
-    setAccess(false);
+    dispatch(persistenuser(null));
+    window.localStorage.removeItem("loggedUser");
+    navigate("/");
   };
 
   return (
@@ -81,7 +83,8 @@ function App() {
         <Nav logouted={logouted} onSearch={onSearch} onClean={onClean} />
       )}
       <Routes>
-        <Route path="/" element={<Form valiDated={valiDated} />} />
+        <Route path="/" element={<Form />} />
+        {/* <Route path="/" element={<Form valiDated={valiDated} />} /> */}
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}

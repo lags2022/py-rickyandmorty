@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 export default function Favorites() {
   const { myFavorites } = useSelector((state) => state);
+  console.log(myFavorites);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFavorites());
@@ -21,9 +22,7 @@ export default function Favorites() {
           name="select1"
           onChange={(evt) => dispatch(orderCards(evt.target.value))}
         >
-          <option value="Ascendente" selected>
-            Ascendent
-          </option>
+          <option value="Ascendente">Ascendent</option>
           <option value="Descendente">Descendent</option>
         </select>
         <p>Filter by:</p>
@@ -38,7 +37,7 @@ export default function Favorites() {
         </select>
       </div>
       <ul className={style.favorites}>
-        {myFavorites.map((fav) => (
+        {myFavorites?.map((fav) => (
           <li key={fav.id}>
             <div>
               <p>{fav.id}</p>

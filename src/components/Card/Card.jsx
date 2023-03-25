@@ -1,10 +1,7 @@
 import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addFavorite,
-  deleteFavorite,
-} from "../../redux/actions_creators";
+import { addFavorite, deleteFavorite } from "../../redux/actions_creators";
 import { useEffect, useState } from "react";
 
 const Card = (props) => {
@@ -21,9 +18,9 @@ const Card = (props) => {
     }
   };
   useEffect(() => {
-    for (const fav of allCharacters){
+    for (const fav of allCharacters) {
       fav.id === props.id && setIsFav(true);
-    } 
+    }
   }, [allCharacters]);
   return (
     <div className={styles.card}>
