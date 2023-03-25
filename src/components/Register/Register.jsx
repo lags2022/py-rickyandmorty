@@ -1,11 +1,9 @@
 import { useState } from "react";
 import validations from "../Form/validations";
 import style from "./Register.module.css";
-import { createUser } from "../../redux/actions_creators";
-import { useDispatch } from "react-redux";
+import { createUser } from "../../services/login";
 
 export default function Register({ setLogin }) {
-  const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -34,7 +32,7 @@ export default function Register({ setLogin }) {
   const handleSubmitRegister = (evt) => {
     evt?.preventDefault();
     //envio la peticion post para crear el usuario
-    dispatch(createUser(form));
+    createUser(form);
     setForm({
       name: "",
       email: "",

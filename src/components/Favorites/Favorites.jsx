@@ -9,7 +9,6 @@ import { useEffect } from "react";
 
 export default function Favorites() {
   const { myFavorites } = useSelector((state) => state);
-  console.log(myFavorites);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFavorites());
@@ -37,7 +36,7 @@ export default function Favorites() {
         </select>
       </div>
       <ul className={style.favorites}>
-        {myFavorites?.map((fav) => (
+        {myFavorites.map((fav) => (
           <li key={fav.id}>
             <div>
               <p>{fav.id}</p>

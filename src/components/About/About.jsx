@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import style from "./About.module.css";
 
 const About = () => {
@@ -18,7 +19,10 @@ const About = () => {
           optimizando la aplicación.
         </p>
       </div>
-      <img src="https://c4.wallpaperflare.com/wallpaper/675/1012/53/3d-abstract-animal-dog-wallpaper-preview.jpg" alt="img-borrar" />
+      <img
+        src="https://c4.wallpaperflare.com/wallpaper/675/1012/53/3d-abstract-animal-dog-wallpaper-preview.jpg"
+        alt="img-borrar"
+      />
     </div>
   );
 };

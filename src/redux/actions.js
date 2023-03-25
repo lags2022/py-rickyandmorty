@@ -4,5 +4,4 @@ export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 export const GETFAVORITES = "GETFAVORITES";
 export const RESETFAVORITES = "RESETFAVORITES";
-export const LOGINUSER = "LOGINUSER";
-export const PERSISTENTUSER = "PERSISTENTUSER";
+

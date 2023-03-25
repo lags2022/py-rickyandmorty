@@ -1,7 +1,6 @@
 const initialState = {
   myFavorites: [],
   allCharacters: [],
-  user: null,
 };
 
 const redFavoritos = (state = initialState, actions) => {
@@ -41,14 +40,6 @@ const redFavoritos = (state = initialState, actions) => {
       ...state,
       myFavorites: actions.payload,
       allCharacters: actions.payload,
-    },
-    LOGINUSER: {
-      ...state,
-      user: actions.payload,
-    },
-    PERSISTENTUSER: {
-      ...state,
-      user: actions.payload,
     },
   };
   return ACTIONS[actions.type] || { ...state };

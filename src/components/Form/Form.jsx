@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import Register from "../Register/Register";
 import style from "./Form.module.css";
 import validations from "./validations";
-import { loginUser } from "../../redux/actions_creators";
-import { useDispatch } from "react-redux";
+import { loginUser } from "../../services/login";
+import { setToken } from "../../redux/actions_creators";
 
 //{ valiDated } como props estaba
-export default function Form() {
+export default function Form({ setUser }) {
   const [login, setLogin] = useState(false);
-  const dispatch = useDispatch();
 
   const [form, setForm] = useState({
     email: "",
@@ -33,7 +32,9 @@ export default function Form() {
   const handleSubmit = async (evt) => {
     evt?.preventDefault();
     try {
-      dispatch(loginUser(form));
+      const user = await loginUser(form);
+      setToken(user.token);
+      setUser(user);
       setError({
         email: "",
         password: "",

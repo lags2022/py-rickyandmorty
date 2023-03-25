@@ -14,11 +14,11 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   deleteFavorite,
   resetfavorites,
-  persistenuser,
+  setToken,
 } from "./redux/actions_creators";
 import Portafolio from "./components/Portafolio/Portafolio";
 
@@ -32,7 +32,7 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state);
+  const [user, setUser] = useState(null);
 
   const onSearch = (id) => {
     // vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
@@ -66,13 +66,15 @@ function App() {
         window.localStorage.setItem("loggedUser", JSON.stringify(user));
       navigate("/home");
     } else if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON);
-      dispatch(persistenuser(user));
+      const userpersistent = JSON.parse(loggedUserJSON);
+      setUser(userpersistent);
+      setToken(userpersistent.token);
     } else navigate("/");
   }, [user]);
 
   const logouted = () => {
-    dispatch(persistenuser(null));
+    setUser(null);
+    setToken(null);
     window.localStorage.removeItem("loggedUser");
     navigate("/");
   };
@@ -83,7 +85,7 @@ function App() {
         <Nav logouted={logouted} onSearch={onSearch} onClean={onClean} />
       )}
       <Routes>
-        <Route path="/" element={<Form />} />
+        <Route path="/" element={<Form setUser={setUser} />} />
         {/* <Route path="/" element={<Form valiDated={valiDated} />} /> */}
         <Route
           path="/home"
