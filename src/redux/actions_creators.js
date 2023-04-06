@@ -16,7 +16,6 @@ let token = null;
 
 export const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
-  console.log("fucking token",token);
 };
 
 export const addFavorite = (idfav) => {

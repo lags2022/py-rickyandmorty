@@ -22,11 +22,6 @@ import {
 } from "./redux/actions_creators";
 import Portafolio from "./components/Portafolio/Portafolio";
 
-// const valiDatos = {
-//   email: "luis@gmail.com",
-//   password: "admin1234",
-// };
-
 function App() {
   const [characters, setCharacters] = useState([]);
   const location = useLocation();
@@ -38,7 +33,7 @@ function App() {
     // vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
     // fetch(`https://rickandmortyapi.com/api/character/${id}`)
     // fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-      fetch(`https://backrickandmorty.fly.dev/rickandmorty/character/${id}`)
+    fetch(`https://backrickandmorty.fly.dev/rickandmorty/character/${id}`)
       .then((res) => res.json())
       .then((data) => {
         data.error || !data.id
@@ -59,18 +54,15 @@ function App() {
     setCharacters(characters.filter((char) => char.id !== id));
     dispatch(deleteFavorite(id));
   };
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedUser");
-    if (user) {
-      if (!loggedUserJSON)
-        window.localStorage.setItem("loggedUser", JSON.stringify(user));
-      navigate("/home");
-    } else if (loggedUserJSON) {
+    if (loggedUserJSON) {
       const userpersistent = JSON.parse(loggedUserJSON);
       setUser(userpersistent);
       setToken(userpersistent.token);
     } else navigate("/");
-  }, [user]);
+  }, []);
 
   const logouted = () => {
     setUser(null);
@@ -86,7 +78,6 @@ function App() {
       )}
       <Routes>
         <Route path="/" element={<Form setUser={setUser} />} />
-        {/* <Route path="/" element={<Form valiDated={valiDated} />} /> */}
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}

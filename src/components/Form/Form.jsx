@@ -4,9 +4,11 @@ import style from "./Form.module.css";
 import validations from "./validations";
 import { loginUser } from "../../services/login";
 import { setToken } from "../../redux/actions_creators";
+import { useNavigate } from "react-router-dom";
 
 //{ valiDated } como props estaba
 export default function Form({ setUser }) {
+  const navigate = useNavigate();
   const [login, setLogin] = useState(false);
 
   const [form, setForm] = useState({
@@ -33,12 +35,14 @@ export default function Form({ setUser }) {
     evt?.preventDefault();
     try {
       const user = await loginUser(form);
+      window.localStorage.setItem("loggedUser", JSON.stringify(user));
       setToken(user.token);
       setUser(user);
       setError({
         email: "",
         password: "",
       });
+      navigate("/home");
     } catch (error) {
       window.alert(error);
     }
