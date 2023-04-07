@@ -8,9 +8,11 @@ import {
   faRotate,
   faCircleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
+import { searchString } from "../../services/search";
 
 const SearchBar = ({ onSearch, onClean }) => {
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
+  const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
   //autocompletado
@@ -22,8 +24,11 @@ const SearchBar = ({ onSearch, onClean }) => {
   // };
 
   //autocompletado
-  const handleChange = (e) => {
-    setId(e.target.value);
+  const handleChange = () => {
+    const string = getValue();
+    if (!string) return;
+    const searchs = searchString(string);
+    setResults(searchs);
   };
 
   return (
@@ -31,12 +36,33 @@ const SearchBar = ({ onSearch, onClean }) => {
       <p>Character</p>
       <input
         type="text"
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
         placeholder="name..."
-        value={id}
+        // value={id}
         ref={searchRef}
       />
-      <button
+      <div style={{ position: "fixed", top: "60px" }}>
+        {Boolean(results.length) && (
+          <div>
+            <ul>
+              <li> {results.length} resultados</li>
+              {results
+                .map((result) => {
+                  return (
+                    <li key={result.id}>
+                      <button onClick={() => onSearch(result.id)}>
+                        <img src={result.image} width="50" />
+                        {result.name}
+                      </button>
+                    </li>
+                  );
+                })
+                .slice(0, 10)}
+            </ul>
+          </div>
+        )}
+      </div>
+      {/* <button
         onClick={() => {
           onSearch(id);
           setId("");
@@ -44,7 +70,7 @@ const SearchBar = ({ onSearch, onClean }) => {
       >
         <FontAwesomeIcon className={style.fawe} icon={faCheck} />
         <span>Add</span>
-      </button>
+      </button> */}
       <button onClick={() => onSearch(Math.floor(Math.random() * 826) + 1)}>
         <FontAwesomeIcon className={style.fawe} icon={faShuffle} />
         <span>Random</span>
