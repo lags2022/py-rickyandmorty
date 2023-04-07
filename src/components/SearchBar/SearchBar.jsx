@@ -1,12 +1,27 @@
-import { useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "./SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faShuffle,faRotate,faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faShuffle,
+  faRotate,
+  faCircleExclamation,
+} from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ onSearch, onClean }) => {
   const [id, setId] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  //autocompletado
+  const searchRef = useRef();
+  const getValue = () => searchRef.current?.value;
+
+  // const handleChange = (e) => {
+  //   setId(e.target.value);
+  // };
+
+  //autocompletado
   const handleChange = (e) => {
     setId(e.target.value);
   };
@@ -17,8 +32,9 @@ const SearchBar = ({ onSearch, onClean }) => {
       <input
         type="text"
         onChange={(e) => handleChange(e)}
-        placeholder="#id"
+        placeholder="name..."
         value={id}
+        ref={searchRef}
       />
       <button
         onClick={() => {
