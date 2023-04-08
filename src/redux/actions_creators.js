@@ -5,6 +5,7 @@ import {
   ORDER,
   GETFAVORITES,
   RESETFAVORITES,
+  LEAVEFAVORITES,
 } from "./actions";
 import axios from "axios";
 
@@ -16,6 +17,12 @@ let token = null;
 
 export const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
+};
+
+export const leaveFavorites = () => {
+  return {
+    type: LEAVEFAVORITES,
+  };
 };
 
 export const addFavorite = (idfav) => {

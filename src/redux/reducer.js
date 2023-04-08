@@ -41,6 +41,11 @@ const redFavoritos = (state = initialState, actions) => {
       myFavorites: actions.payload,
       allCharacters: actions.payload,
     },
+    LEAVEFAVORITES: {
+      ...state,
+      myFavorites: [],
+      allCharacters: [],
+    },
   };
   return ACTIONS[actions.type] || { ...state };
 };

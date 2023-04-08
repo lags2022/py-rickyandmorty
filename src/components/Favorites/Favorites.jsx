@@ -4,6 +4,7 @@ import {
   orderCards,
   filterCards,
   getFavorites,
+  leaveFavorites,
 } from "../../redux/actions_creators";
 import { useEffect } from "react";
 
@@ -12,6 +13,7 @@ export default function Favorites() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFavorites());
+    return () => dispatch(leaveFavorites());
   }, []);
   return (
     <>
