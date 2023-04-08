@@ -19,6 +19,7 @@ import {
   deleteFavorite,
   resetfavorites,
   setToken,
+  leaveFavorites,
 } from "./redux/actions_creators";
 import Portafolio from "./components/Portafolio/Portafolio";
 
@@ -69,6 +70,7 @@ function App() {
     setToken(null);
     setCharacters([]);
     window.localStorage.removeItem("loggedUser");
+    dispatch(leaveFavorites());
     navigate("/");
   };
 
