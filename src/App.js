@@ -67,6 +67,7 @@ function App() {
   const logouted = () => {
     setUser(null);
     setToken(null);
+    setCharacters([]);
     window.localStorage.removeItem("loggedUser");
     navigate("/");
   };
