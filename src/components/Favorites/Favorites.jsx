@@ -7,12 +7,13 @@ import {
 } from "../../redux/actions_creators";
 import { useEffect } from "react";
 
-export default function Favorites() {
+export default function Favorites({ user }) {
   const { myFavorites } = useSelector((state) => state);
+  console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getFavorites());
-  }, []);
+    user && dispatch(getFavorites());
+  }, [user]);
   return (
     <>
       <div className={style.select}>
@@ -36,7 +37,7 @@ export default function Favorites() {
         </select>
       </div>
       <ul className={style.favorites}>
-        {myFavorites.map((fav) => (
+        {myFavorites?.map((fav) => (
           <li key={fav.id}>
             <div>
               <p>{fav.id}</p>

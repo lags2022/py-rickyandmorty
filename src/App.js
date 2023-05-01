@@ -48,7 +48,7 @@ function App() {
 
   const onClean = () => {
     setCharacters([]);
-    dispatch(resetfavorites());
+    if (location.pathname === "/favorites") dispatch(resetfavorites());
   };
 
   const onClose = (id) => {
@@ -86,7 +86,7 @@ function App() {
           element={<Cards characters={characters} onClose={onClose} />}
         />
         <Route path="about" element={<About />} />
-        <Route path="favorites" element={<Favorites />} />
+        <Route path="favorites" element={<Favorites user={user} />} />
         <Route path="portafolio" element={<Portafolio />} />
         <Route path="detail/:id" element={<Detail />} />
         <Route path="error404" element={<Error />} />
