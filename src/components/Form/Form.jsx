@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Register from "../Register/Register";
 import style from "./Form.module.css";
 import validations from "./validations";
 import { loginUser } from "../../services/login";
 import { setToken } from "../../redux/actions_creators";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 //{ valiDated } como props estaba
 export default function Form({ setUser }) {
@@ -34,6 +35,8 @@ export default function Form({ setUser }) {
   const handleSubmit = async (evt) => {
     evt?.preventDefault();
     try {
+      if (![form.email, form.password].every(Boolean))
+        throw new Error("Data missing");
       const user = await loginUser(form);
       window.localStorage.setItem("loggedUser", JSON.stringify(user));
       setToken(user.token);
@@ -44,7 +47,8 @@ export default function Form({ setUser }) {
       });
       navigate("/home");
     } catch (error) {
-      window.alert(error);
+      if (error.name === "TypeError") toast.error("User not found");
+      else toast.error(error.message);
     }
   };
 
@@ -52,40 +56,44 @@ export default function Form({ setUser }) {
     <div className={style.form}>
       {!login ? (
         <>
-          <h3>LOGIN</h3>
-          <form action="login" onSubmit={handleSubmit}>
-            <label htmlFor="email">EMAIL: </label>
+          <h3>Login</h3>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email: </label>
             <input
               type="text"
               name="email"
               onChange={handleInput}
-              placeholder="Ingrese el email..."
               value={form.email}
             />
             <p>{error.email}</p>
-            <label htmlFor="password">PASSWORD: </label>
+            <label htmlFor="password">Password: </label>
             <input
               type="password"
               name="password"
               onChange={handleInput}
-              placeholder="Ingrese el password..."
               value={form.password}
             />
             <p>{error.password}</p>
-            <button type="submit" onClick={() => handleSubmit()}>
-              Login
-            </button>
+            <button type="submit">Login</button>
           </form>
-          <button
-            style={{ width: "100px", marginTop: "10px" }}
-            onClick={() => setLogin(true)}
+          <div
+            style={{
+              display: "flex",
+              alignContent: "center",
+              justifyContent: "center",
+              gap: "10px",
+            }}
           >
-            Registrarse
-          </button>
+            <h5 style={{ margin: "auto 0px" }}>New to App?</h5>
+            <h5 className={style.formbut} onClick={() => setLogin(true)}>
+              Sign Up
+            </h5>
+          </div>
         </>
       ) : (
         <Register setLogin={setLogin} />
       )}
+      <Toaster />
     </div>
   );
 }

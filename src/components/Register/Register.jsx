@@ -2,6 +2,7 @@ import { useState } from "react";
 import validations from "../Form/validations";
 import style from "./Register.module.css";
 import { createUser } from "../../services/login";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Register({ setLogin }) {
   const [form, setForm] = useState({
@@ -31,60 +32,73 @@ export default function Register({ setLogin }) {
 
   const handleSubmitRegister = (evt) => {
     evt?.preventDefault();
-    //envio la peticion post para crear el usuario
-    createUser(form);
-    setForm({
-      name: "",
-      email: "",
-      password: "",
-    });
-    setError({
-      name: "",
-      email: "",
-      password: "",
-    });
-    setLogin(false);
+    try {
+      //envio la peticion post para crear el usuario
+      if (![form.name, form.email, form.password].every(Boolean))
+        throw new Error("Data missing");
+      if (![error.name, error.email, error.password].some(Boolean)) {
+        createUser(form);
+        setForm({
+          name: "",
+          email: "",
+          password: "",
+        });
+        setError({
+          name: "",
+          email: "",
+          password: "",
+        });
+        setLogin(false);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
     <div className={style.register}>
-      <h3>Registrarse</h3>
+      <h3>Sign Up</h3>
       <form action="login" onSubmit={handleSubmitRegister}>
-        <label htmlFor="name">NOMBRE: </label>
+        <label htmlFor="name">Name: </label>
         <input
           type="text"
           name="name"
           onChange={handleRegister}
-          placeholder="Ingrese su nombre..."
           value={form.name}
         />
         <p>{error.name}</p>
-        <label htmlFor="email">EMAIL: </label>
+        <label htmlFor="email">Email: </label>
         <input
           type="text"
           name="email"
           onChange={handleRegister}
-          placeholder="Ingrese el email..."
           value={form.email}
         />
         <p>{error.email}</p>
-        <label htmlFor="password">PASSWORD: </label>
+        <label htmlFor="password">Password: </label>
         <input
           type="password"
           name="password"
           onChange={handleRegister}
-          placeholder="Ingrese el password..."
           value={form.password}
         />
         <p>{error.password}</p>
-        <button
-          style={{ width: "100px" }}
-          type="submit"
-          onClick={() => handleSubmitRegister()}
-        >
-          Registrarse
-        </button>
+        <button type="submit">Sign Up</button>
       </form>
+      <div
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        <h5 style={{ margin: "auto 0px" }}>Already have an account?</h5>
+        <h5 className={style.regbut} onClick={() => setLogin(false)}>
+          Login
+        </h5>
+      </div>
+      <Toaster />
     </div>
   );
 }

@@ -11,25 +11,25 @@ import {
 import { searchString } from "../../services/search";
 
 const SearchBar = ({ onSearch, onClean }) => {
-  // const [id, setId] = useState("");
-  const [results, setResults] = useState([]);
+  const [id, setId] = useState("");
+  // const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
-  //autocompletado
-  const searchRef = useRef();
-  const getValue = () => searchRef.current?.value;
+  // //autocompletado
+  // const searchRef = useRef();
+  // const getValue = () => searchRef.current?.value;
 
-  // const handleChange = (e) => {
-  //   setId(e.target.value);
-  // };
-
-  //autocompletado
-  const handleChange = () => {
-    const string = getValue();
-    if (!string) return;
-    const searchs = searchString(string);
-    setResults(searchs);
+  const handleChange = (e) => {
+    setId(e.target.value);
   };
+
+  // //autocompletado
+  // const handleChange = () => {
+  //   const string = getValue();
+  //   if (!string) return;
+  //   const searchs = searchString(string);
+  //   setResults(searchs);
+  // };
 
   return (
     <div className={style.searchBar}>
@@ -37,11 +37,11 @@ const SearchBar = ({ onSearch, onClean }) => {
       <input
         type="text"
         onChange={handleChange}
-        placeholder="name..."
-        // value={id}
-        ref={searchRef}
+        placeholder="Id.."
+        value={id}
+        // ref={searchRef}
       />
-      <div style={{ position: "fixed", top: "60px" }}>
+      {/* <div style={{ position: "fixed", top: "60px" }}>
         {Boolean(results.length) && (
           <div>
             <ul>
@@ -61,8 +61,11 @@ const SearchBar = ({ onSearch, onClean }) => {
             </ul>
           </div>
         )}
-      </div>
-      {/* <button
+      </div> */}
+
+      {/* revisar */}
+
+      <button
         onClick={() => {
           onSearch(id);
           setId("");
@@ -70,7 +73,10 @@ const SearchBar = ({ onSearch, onClean }) => {
       >
         <FontAwesomeIcon className={style.fawe} icon={faCheck} />
         <span>Add</span>
-      </button> */}
+      </button>
+
+      {/* revisar */}
+
       <button onClick={() => onSearch(Math.floor(Math.random() * 826) + 1)}>
         <FontAwesomeIcon className={style.fawe} icon={faShuffle} />
         <span>Random</span>

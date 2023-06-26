@@ -1,0 +1,16 @@
+.register > form > input {
+  outline: none;
+}
+
+.regbut {
+  margin: 10px 0px;
+  background-color: transparent;
+  padding: 0px;
+  width: fit-content;
+  cursor: pointer;
+  color: rgb(0, 193, 0);
+}
+
+.regbut:hover {
+  color: green;
+}

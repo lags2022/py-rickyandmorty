@@ -39,7 +39,7 @@ export const addFavorite = (idfav) => {
         payload: add.data,
       });
     } catch (error) {
-      window.alert(error);
+      console.log(error);
     }
   };
 };
@@ -58,7 +58,7 @@ export const getFavorites = () => {
         payload: data,
       });
     } catch (error) {
-      window.alert(error);
+      console.log(error);
     }
   };
 };
@@ -77,7 +77,7 @@ export const deleteFavorite = (id) => {
         payload: dele.data.id,
       });
     } catch (error) {
-      window.alert(error);
+      console.log(error);
     }
   };
 };
@@ -110,7 +110,7 @@ export const resetfavorites = () => {
         payload: reset.data,
       });
     } catch (error) {
-      window.alert(error);
+      console.log(error);
     }
   };
 };

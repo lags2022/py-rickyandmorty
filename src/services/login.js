@@ -8,7 +8,7 @@ export const createUser = async (user) => {
   try {
     await axios.post(userUrl, user);
   } catch (error) {
-    window.alert(error);
+    console.log(error);
   }
 };
 
@@ -17,6 +17,6 @@ export const loginUser = async (credentials) => {
     const { data } = await axios.post(`${userUrl}/login`, credentials);
     return data;
   } catch (error) {
-    window.alert(error);
+    console.log(error);
   }
 };

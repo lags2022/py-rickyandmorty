@@ -1,6 +1,6 @@
 .form {
-  width: 400px;
-  height: 270px;
+  width: fit-content;
+  height: fit-content;
   margin: auto;
   margin-top: 20px;
   border: 3px solid #074807;
@@ -26,15 +26,16 @@
   margin: 0px 50px;
 }
 
-.form form label{
+.form form label {
   display: inline-block;
   width: 110px;
-  text-align: end;
+  text-align: center;
   padding-right: 10px;
 }
 
 .form form input {
   margin-top: 10px;
+  outline: none;
 }
 
 .form form p {
@@ -58,6 +59,19 @@
 .form button:hover {
   background-color: #c8f92c;
   color: #052b3f;
+}
+
+.formbut {
+  margin: 10px 0px;
+  background-color: transparent;
+  padding: 0px;
+  width: fit-content;
+  cursor: pointer;
+  color: rgb(0, 193, 0);
+}
+
+.formbut:hover {
+  color: green;
 }
 
 @media screen and (max-width: 600px) {

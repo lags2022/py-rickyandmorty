@@ -22,6 +22,7 @@ import {
   leaveFavorites,
 } from "./redux/actions_creators";
 import Portafolio from "./components/Portafolio/Portafolio";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -38,12 +39,12 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         data.error || !data.id
-          ? window.alert("No existe ese personaje con ese ID")
+          ? toast.error(`The character with the ID(${id}) does not exist`)
           : !characters.find((char) => char.id === parseInt(id))
           ? setCharacters([...characters, data])
-          : window.alert("Personaje duplicado");
+          : toast.error("Duplicate character");
       })
-      .catch((error) => window.alert("parameter invalid"));
+      .catch((error) => toast.error("Parameter invalid"));
   };
 
   const onClean = () => {
@@ -92,6 +93,7 @@ function App() {
         <Route path="error404" element={<Error />} />
         <Route path="*" element={<Navigate to="error404" replace />} />
       </Routes>
+      <Toaster />
     </div>
   );
 }
