@@ -35,9 +35,9 @@ export default function Form({ setUser }) {
   const handleSubmit = async (evt) => {
     evt?.preventDefault();
     try {
-      if (![form.email, form.password].every(Boolean))
-        throw new Error("Data missing");
       const user = await loginUser(form);
+      if (![form.email, form.password, user].every(Boolean))
+        throw new Error("Data missing");
       window.localStorage.setItem("loggedUser", JSON.stringify(user));
       setToken(user.token);
       setUser(user);
