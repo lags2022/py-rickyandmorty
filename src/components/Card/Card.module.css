@@ -7,7 +7,7 @@
   padding: 0;
   position: relative;
   box-shadow: 1px 1px 10px #4ca34c;
-  background: url("../../images/card.png");
+  background: url("/public/card.webp");
 }
 
 .card_top {

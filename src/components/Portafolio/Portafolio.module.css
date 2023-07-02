@@ -10,7 +10,7 @@
 }
 
 .miportafolio p {
-  background-image: url("../../images/card.png");
+  background-image: url("/public/card.webp");
   width: 100px;
   padding: 10px;
   border-radius: 10px;
@@ -31,7 +31,7 @@
   width: 400px;
   padding: 0;
   box-shadow: 1px 1px 10px #4ca34c;
-  background: url("../../images/card.png");
+  background: url("/public/card.webp");
   list-style: none;
   margin: 20px;
   display: flex;

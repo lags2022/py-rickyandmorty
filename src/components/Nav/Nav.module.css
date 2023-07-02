@@ -4,7 +4,7 @@ header {
   justify-content: space-between;
   width: 100%;
   padding: 13px;
-  background: url("../../images/card.png");
+  background: url("/public/card.webp");
   z-index: 2;
 }
 

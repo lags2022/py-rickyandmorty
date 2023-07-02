@@ -22,7 +22,7 @@
   place-content: center;
   border: 3px solid #074807;
   border-radius: 30px;
-  background-image: url("../../images/card.png");
+  background-image: url("/public/card.webp");
   box-shadow: 1px 1px 10px #4ca34c;
 }
 
