@@ -13,7 +13,7 @@ export const createUser = async (user) => {
 export const loginUser = async (credentials) => {
   try {
     const { data } = await axios.post(`${userUrl}/login`, credentials);
-    if (!data) throw new Error("Usporque?");
+    if (!data) throw new Error("user not found");
     return data;
   } catch (error) {
     console.log(error);
