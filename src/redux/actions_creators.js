@@ -9,9 +9,7 @@ import {
 } from "./actions";
 import axios from "axios";
 
-// vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
-// const url = "http://localhost:3001/rickandmorty/fav";
-const url = "https://backrickandmorty.fly.dev/rickandmorty/fav";
+const url = `${process.env.REACT_APP_URL_API}/rickandmorty/fav`
 
 let token = null;
 

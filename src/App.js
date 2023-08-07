@@ -32,17 +32,14 @@ function App() {
   const [user, setUser] = useState(null);
 
   const onSearch = (id) => {
-    // vuelve a descomentar esto cuando estes en local , vuelvo a comentarlo para que funcione en flyio
-    // fetch(`https://rickandmortyapi.com/api/character/${id}`)
-    // fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-    fetch(`https://backrickandmorty.fly.dev/rickandmorty/character/${id}`)
+    fetch(`${process.env.REACT_APP_URL_API}/rickandmorty/character/${id}`)
       .then((res) => res.json())
       .then((data) => {
         data.error || !data.id
           ? toast.error(`The character with the ID(${id}) does not exist`)
           : !characters.find((char) => char.id === parseInt(id))
-          ? setCharacters([...characters, data])
-          : toast.error("Duplicate character");
+            ? setCharacters([...characters, data])
+            : toast.error("Duplicate character");
       })
       .catch((error) => toast.error("Parameter invalid"));
   };

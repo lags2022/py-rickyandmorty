@@ -1,8 +1,6 @@
 import axios from "axios";
 
-//quitar el fly.io para desarrollo local
-// const userUrl = "http://localhost:3001/ramusers/users";
-const userUrl = "https://backrickandmorty.fly.dev/ramusers/users";
+const userUrl = `${process.env.REACT_APP_URL_API}/ramusers/users`
 
 export const createUser = async (user) => {
   try {
