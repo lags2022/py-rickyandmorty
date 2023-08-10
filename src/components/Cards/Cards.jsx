@@ -1,16 +1,16 @@
-import React from "react";
-import Card from "../Card/Card";
-import style from "./Cards.module.css"
+import React from 'react'
+import Card from '../Card/Card'
+import style from './Cards.module.css'
 
 class Cards extends React.Component {
-  constructor(props) {
-    super();
+  constructor (props) {
+    super()
   }
 
-  render() {
-    const { characters } = this.props;
+  render () {
+    const { characters } = this.props
     return (
-      <div className={style.cards} >
+      <div className={style.cards}>
         {characters.map((char) => (
           <Card
             key={char.id}
@@ -23,8 +23,8 @@ class Cards extends React.Component {
           />
         ))}
       </div>
-    );
+    )
   }
 }
 
-export default Cards;
+export default Cards

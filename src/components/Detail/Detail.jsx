@@ -1,27 +1,27 @@
-import style from "./Detail.module.css";
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import style from './Detail.module.css'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const Detail = () => {
-  const { id } = useParams();
-  const [detail, setDetail] = useState({});
-  const navigate = useNavigate();
+  const { id } = useParams()
+  const [detail, setDetail] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getDetail = async () => {
       try {
         const character = await axios(
           `${process.env.REACT_APP_URL_API}/rickandmorty/detail/${id}`
-        );
-        setDetail(character.data);
+        )
+        setDetail(character.data)
       } catch (error) {
-        window.alert("no hay informacion");
+        window.alert('no hay informacion')
       }
-    };
-    getDetail();
-    return () => setDetail({});
-  }, [id]);
+    }
+    getDetail()
+    return () => setDetail({})
+  }, [id])
 
   return (
     <div className={style.detail}>
@@ -36,11 +36,11 @@ const Detail = () => {
         </div>
         <img src={detail.image} alt={detail.name} />
       </div>
-      <button className={style.detail_button} onClick={() => navigate("/home")}>
+      <button className={style.detail_button} onClick={() => navigate('/home')}>
         Home
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Detail;
+export default Detail

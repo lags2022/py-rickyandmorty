@@ -52,21 +52,54 @@ npm start: .env.development.local, .env.local, .env.development, .env
 npm run build: .env.production.local, .env.local, .env.production, .env
 npm test: .env.test.local, .env.test, .env (note .env.local is missing)
 
-.env: Cuando colocas tus variables de entorno en un archivo llamado simplemente .env, estas variables se aplicarán a todos los entornos (desarrollo, pruebas y producción).
+.env: when you put your environment variables in a file called simply .env. These variables will apply to all environments (development, test and production)
 
-.env.local: En cambio, el archivo .env.local se utiliza para definir variables de entorno específicas de desarrollo. Las variables definidas aquí se cargarán cuando ejecutes npm start y trabajarán en el entorno de desarrollo. Sin embargo, no afectarán las pruebas (npm test) ni la producción (npm run build), lo que permite tener configuraciones específicas para tu máquina local sin interferir con los otros entornos.
+.env.local: Instead, the .env.local file is used to all environment(development and production), if you run npm start, can work in the development environment.
 
-Los archivos .env.development.local, .env.production.local y .env.local se refieren a archivos de configuración de entorno que están destinados a ser utilizados en entornos de desarrollo y producción locales. Estos archivos permiten definir variables de entorno específicas para cada entorno (desarrollo y producción) en tu proyecto.
+However, for development in a real production environment, it is more common to use just .env.production that env.local.production.
 
-Recuerda que las variables de entorno que definas en .env.local se aplicarán en todos los entornos (desarrollo y producción) cuando estás usando Create React App. Sin embargo, si necesitas variables específicas para cada entorno, puedes seguir utilizando los archivos .env.development.local y .env.production.local según corresponda.
+## React Testing Library(RTL)
 
-Por otro lado, .env.production.local podría ser utilizado si necesitas configurar variables de entorno específicas para tu entorno de producción local, es decir, cuando estás probando tu aplicación en tu máquina antes de desplegarla en producción. Sin embargo, para el despliegue en un entorno de producción real, es más común utilizar solo .env.production.
+React Testing Library is a tool for testing React applications in a way that they resemble how users interact with them. Instead of examining internal details of your components, it focuses on testing actions that a user would take, such as clicking buttons or checking visual elements. Its API is easy to use and is based on how users find and use elements in the interface. Important, it doesn't care about how a component is built internally, which makes test more resistant to change. It also  simplifies testing of asynchronous actions and integrates with other popular testing libraries like Jest and DOM Testing Library. In short, the React Testing Library helps build more reliable apps by focusing on the user experience and making testing simpler and more robust.
 
-Cuando ejecutas npm start para desarrollar localmente, CRA automáticamente cargará las variables de entorno desde el archivo .env.development.local si existe. Si no existe, utilizará el archivo .env.local.
+## Enzyme
 
-Cuando ejecutas npm run build para crear la versión optimizada de tu aplicación para producción, CRA cargará las variables de entorno desde el archivo .env.production.local si existe. Si no existe, utilizará el archivo .env.local. En ambos casos, NODE_ENV se establecerá en production.
+Enzyme is another library for testing React applications, but it focuses on accessing and manipulating internal details of components. It has three API levels for different depths of testing and is more concerned with implementation details. You can use it with different renderes and easily extend it. By comparison, the React Testing Library focuses on testing user behavior and is simpler. The choice between the two depends on whether you prefer more details tests(Enzyme) or focused on the user experience (React Testing Library). Both are popular in the React community.
 
-Cuando ejecutas npm test, Create React App utiliza las configuraciones de entorno definidas en el archivo .env.development. Esto es así porque las pruebas generalmente se ejecutan en el entorno de desarrollo para facilitar la depuración y la identificación de problemas. Si deseas definir configuraciones específicas para las pruebas, puedes utilizar el archivo .env.test.local. Las variables definidas en este archivo se cargarán automáticamente al ejecutar las pruebas con npm test.
+## Y Jest?
+
+Sure, you can use Jest to test your React apps without the React Testing Library (RTL) or Enzyme. Jest is a popular JavaScript testing framework that is fully compatible with React. It allows you to write and run tests effectively without requiring additional libraries. Jest has powerful tools for unit, integration, and component testing in React. You can use assert functions, mocks, and other Jest features to confirm the behavior and functionality of your components.
+
+### Jest and EMC6
+
+Segun la [documentation](https://jestjs.io/docs/ecmascript-modules), Jest se envía con soporte experimental para módulos ECMAScript (ESM). Realizar lo siguiente:
+
+
+
+
+
+#### More information
+
+- puede escribirse asi jes.config.js o jes.config.mjs,  jes.config.json
+- puede escribirse .babelrc o .babelrc.js
+- colocar en las configuraciones de jest.config.js colocar identity-obj-proxy para el css.
+- revisa la documentacion de redux y react para solucionar los problemas sobre el testing.
+
+- More important: https://jestjs.io/docs/ecmascript-modules (write documentation)
+- https://github.com/jestjs/jest/blob/main/jest.config.mjs
+- https://jestjs.io/docs/29.1/webpack
+- https://jestjs.io/docs/webpack#mocking-css-modules
+- https://stackoverflow.com/questions/71207221/babel-config-js-only-for-jest/71290964#71290964
+- https://jestjs.io/docs/configuration
+- https://testing-library.com/docs/react-testing-library/setup/
+- https://redux.js.org/usage/writing-tests#components
+- https://bobbyhadz.com/blog/jest-typeerror-cannot-read-properties-of-undefined-reading-testenvironmentoptions
+- https://jestjs.io/docs/code-transformation
+- https://jestjs.io/docs/tutorial-react#dom-testing
+- https://jestjs.io/docs/getting-started#using-babel
+- https://www.js-howto.com/jest-usenavigate-may-be-used-only-in-the-context-of-a-router/
+- https://www.js-howto.com/how-to-mock-react-router-dom-hooks-in-jest/
+
 
 ## Available Scripts
 
@@ -134,3 +167,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+

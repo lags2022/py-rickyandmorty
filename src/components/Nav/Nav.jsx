@@ -1,25 +1,25 @@
-import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
-import style from "./Nav.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { Link } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar'
+import style from './Nav.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
 
 const Nav = (props) => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false)
   const renderLink = () => {
     return (
       <>
-        <Link className={style.link} to="home">
+        <Link className={style.link} to='home'>
           Home
         </Link>
-        <Link className={style.link} to="about">
+        <Link className={style.link} to='about'>
           About
         </Link>
-        <Link className={style.link} to="favorites">
+        <Link className={style.link} to='favorites'>
           Favorites
         </Link>
-        <Link className={style.link} to="portafolio">
+        <Link className={style.link} to='portafolio'>
           Portafolio
         </Link>
         <button
@@ -30,8 +30,8 @@ const Nav = (props) => {
           <span>Logout</span>
         </button>
       </>
-    );
-  };
+    )
+  }
   return (
     <header>
       <FontAwesomeIcon
@@ -43,7 +43,7 @@ const Nav = (props) => {
       {toggle && <div className={style.links2}>{renderLink()}</div>}
       <SearchBar {...props} />
     </header>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

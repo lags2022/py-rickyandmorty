@@ -1,27 +1,27 @@
-import styles from "./Card.module.css";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, deleteFavorite } from "../../redux/actions_creators";
-import { useEffect, useState } from "react";
+import styles from './Card.module.css'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addFavorite, deleteFavorite } from '../../redux/actions_creators.js'
+import { useEffect, useState } from 'react'
 
 const Card = (props) => {
-  const [isFav, setIsFav] = useState(false);
-  const dispatch = useDispatch();
-  const { allCharacters } = useSelector((state) => state);
+  const [isFav, setIsFav] = useState(false)
+  const dispatch = useDispatch()
+  const { allCharacters } = useSelector((state) => state)
   const handleFavorite = () => {
     if (isFav) {
-      setIsFav(false);
-      dispatch(deleteFavorite(props.id));
+      setIsFav(false)
+      dispatch(deleteFavorite(props.id))
     } else {
-      setIsFav(true);
-      dispatch(addFavorite(props));
+      setIsFav(true)
+      dispatch(addFavorite(props))
     }
-  };
+  }
   useEffect(() => {
     for (const fav of allCharacters) {
-      fav.id === props.id && setIsFav(true);
+      fav.id === props.id && setIsFav(true)
     }
-  }, [allCharacters]);
+  }, [allCharacters])
   return (
     <div className={styles.card}>
       <img src={props.image} alt={props.name} />
@@ -30,11 +30,13 @@ const Card = (props) => {
         <button onClick={() => props.onClose(props.id)}>X</button>
       </div>
       <div className={styles.card_p}>
-        {isFav ? (
-          <button onClick={handleFavorite}>❤️</button>
-        ) : (
-          <button onClick={handleFavorite}> 🤍 </button>
-        )}
+        {isFav
+          ? (
+            <button onClick={handleFavorite}>❤️</button>
+            )
+          : (
+            <button onClick={handleFavorite}>🤍</button>
+            )}
         <p>{props.species}</p>
       </div>
       <div className={styles.card_bottom}>
@@ -44,7 +46,7 @@ const Card = (props) => {
         <p>{props.gender}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

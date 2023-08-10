@@ -1,4 +1,4 @@
-import chararterJsonJS from "../scraping/all/index.json";
+import chararterJsonJS from '../scraping/all/index.json'
 
 // const chararterJsonJS = [
 //   {
@@ -38,17 +38,16 @@ const search = (string, name) => {
     if (
       string[0].toLowerCase() === name[i].toLowerCase() &&
       string.toLowerCase() === name.slice(i, string.length + i).toLowerCase()
-    )
-      return true;
+    ) { return true }
   }
-  return false;
-};
+  return false
+}
 
 export const searchString = (string) => {
-  const searchArrays = [];
+  const searchArrays = []
   chararterJsonJS.forEach((char) => {
-    const { name } = char;
-    if (search(string, name)) searchArrays.push(char);
-  });
-  return searchArrays;
-};
+    const { name } = char
+    if (search(string, name)) searchArrays.push(char)
+  })
+  return searchArrays
+}

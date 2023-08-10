@@ -1,14 +1,14 @@
 const initialState = {
   myFavorites: [],
-  allCharacters: [],
-};
+  allCharacters: []
+}
 
 const redFavoritos = (state = initialState, actions) => {
   const ACTIONS = {
     ADDFAVORITES: {
       ...state,
       allCharacters: [...state.allCharacters, actions.payload],
-      myFavorites: [...state.allCharacters, actions.payload],
+      myFavorites: [...state.allCharacters, actions.payload]
     },
     REMOVEFAVORITES: {
       ...state,
@@ -17,37 +17,37 @@ const redFavoritos = (state = initialState, actions) => {
       ),
       allCharacters: state.allCharacters.filter(
         (fav) => fav.id !== actions.payload
-      ),
+      )
     },
     GETFAVORITES: {
       myFavorites: actions.payload,
-      allCharacters: actions.payload,
+      allCharacters: actions.payload
     },
     FILTER: {
       ...state,
       myFavorites: state.allCharacters.filter(
         (char) => char.gender === actions.payload
-      ),
+      )
     },
     ORDER: {
       ...state,
       myFavorites:
-        actions.payload === "Ascendente"
+        actions.payload === 'Ascendente'
           ? state.allCharacters.sort((a, b) => a.id - b.id)
-          : state.allCharacters.sort((a, b) => b.id - a.id),
+          : state.allCharacters.sort((a, b) => b.id - a.id)
     },
     RESETFAVORITES: {
       ...state,
       myFavorites: actions.payload,
-      allCharacters: actions.payload,
+      allCharacters: actions.payload
     },
     LEAVEFAVORITES: {
       ...state,
       myFavorites: [],
-      allCharacters: [],
-    },
-  };
-  return ACTIONS[actions.type] || { ...state };
-};
+      allCharacters: []
+    }
+  }
+  return ACTIONS[actions.type] || { ...state }
+}
 
-export default redFavoritos;
+export default redFavoritos

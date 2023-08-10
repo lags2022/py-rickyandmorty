@@ -1,27 +1,26 @@
-import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import style from "./SearchBar.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import style from './SearchBar.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCheck,
   faShuffle,
   faRotate,
-  faCircleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
-import { searchString } from "../../services/search";
+  faCircleExclamation
+} from '@fortawesome/free-solid-svg-icons'
 
 const SearchBar = ({ onSearch, onClean }) => {
-  const [id, setId] = useState("");
+  const [id, setId] = useState('')
   // const [results, setResults] = useState([]);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // //autocompletado
   // const searchRef = useRef();
   // const getValue = () => searchRef.current?.value;
 
   const handleChange = (e) => {
-    setId(e.target.value);
-  };
+    setId(e.target.value)
+  }
 
   // //autocompletado
   // const handleChange = () => {
@@ -35,9 +34,9 @@ const SearchBar = ({ onSearch, onClean }) => {
     <div className={style.searchBar}>
       <p>Character</p>
       <input
-        type="text"
+        type='text'
         onChange={handleChange}
-        placeholder="Id.."
+        placeholder='Id..'
         value={id}
         // ref={searchRef}
       />
@@ -67,8 +66,8 @@ const SearchBar = ({ onSearch, onClean }) => {
 
       <button
         onClick={() => {
-          onSearch(id);
-          setId("");
+          onSearch(id)
+          setId('')
         }}
       >
         <FontAwesomeIcon className={style.fawe} icon={faCheck} />
@@ -85,12 +84,12 @@ const SearchBar = ({ onSearch, onClean }) => {
         <FontAwesomeIcon className={style.fawe} icon={faRotate} />
         <span>Reset</span>
       </button>
-      <button onClick={() => navigate("/error404")}>
+      <button onClick={() => navigate('/error404')}>
         <FontAwesomeIcon className={style.fawe} icon={faCircleExclamation} />
         <span>404</span>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar
