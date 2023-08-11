@@ -1,9 +1,6 @@
 /** @type {import('jest').Config} */
 
 const config = {
-  transform: {
-    '\\.[jt]sx?$': 'babel-jest'
-  },
   testEnvironment: 'jest-environment-jsdom',
   extensionsToTreatAsEsm: ['.jsx'],
   moduleNameMapper: {

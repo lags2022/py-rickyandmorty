@@ -23,6 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:esm": "npx cross-env NODE_OPTIONS='--experimental-vm-modules' jest",
     "eject": "react-scripts eject",
     "lint": "standard .",
     "lint:fix": "standard --fix"

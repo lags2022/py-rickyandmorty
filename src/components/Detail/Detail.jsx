@@ -1,7 +1,7 @@
 import style from './Detail.module.css'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 
 const Detail = () => {
   const { id } = useParams()
@@ -9,19 +9,26 @@ const Detail = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const getDetail = async () => {
-      try {
-        const character = await axios(
-          `${process.env.REACT_APP_URL_API}/rickandmorty/detail/${id}`
-        )
-        setDetail(character.data)
-      } catch (error) {
-        window.alert('no hay informacion')
-      }
-    }
-    getDetail()
+    fetch(`${process.env.REACT_APP_URL_API}/rickandmorty/detail/${id}`)
+      .then(res => res.json())
+      .then(data => setDetail(data))
+      .catch(error => console.log(error.message))
+
     return () => setDetail({})
   }, [id])
+
+  // useEffect(() => {
+  //   const getDetail = async () => {
+  //     try {
+  //       const { data } = await axios.get(`${process.env.REACT_APP_URL_API}/rickandmorty/detail/${id}`)
+  //       setDetail(data)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   getDetail()
+  //   return () => setDetail({})
+  // }, [id])
 
   return (
     <div className={style.detail}>
