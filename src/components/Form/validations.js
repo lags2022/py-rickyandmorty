@@ -13,7 +13,7 @@ export default function validations ({ name, email, password }) {
   if (!password) errors.password = 'Ingrese el password'
   else if (!validPassword.test(password)) { errors.password = 'La contraseña tiene que tener al menos un número' } else if (password.length < 5 || password.length > 40) {
     errors.password =
-      'La contraseña tiene que tener una longitud entre 5 y 40 caracteres'
+      'longitud de contraseña: entre 5 y 40 caracteres'
   }
 
   return errors
